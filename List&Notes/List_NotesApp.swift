@@ -11,7 +11,26 @@ import SwiftUI
 struct List_NotesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView{
+                NavigationView{
+                    ListView(coreDM: CoreDataManger())
+                }
+                .tabItem { Image(systemName: "list.bullet.rectangle")
+                    Text("List")
+                }
+                NavigationView{
+                    NewNoteView(coreDM: CoreDataManger())
+                }
+                .tabItem { Image(systemName: "note.text.badge.plus")
+                    Text("Create new note")
+                }
+                NavigationView{
+                    NewCategoryView(coreDM: CoreDataManger())
+                }
+                .tabItem { Image(systemName: "folder.fill.badge.plus")
+                    Text("Create new category")
+                }
+            }
         }
     }
 }

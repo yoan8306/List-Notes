@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="title" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notes" inverseName="category" inverseEntity="Notes"/>
+    </entity>
+    <entity name="Notes" representedClassName=".Note" syncable="YES" codeGenerationType="class">
+        <attribute name="dataNote" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="notes" inverseEntity="Category"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-235.4922485351562" positionY="8.715240478515625" width="128" height="73"/>
+        <element name="Notes" positionX="-54" positionY="0" width="128" height="89"/>
+    </elements>
+</model>

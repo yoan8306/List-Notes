@@ -8,18 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		5F6DDBDB262CB551003481ED /* List_NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBDA262CB551003481ED /* List_NotesApp.swift */; };
-		5F6DDBDD262CB551003481ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBDC262CB551003481ED /* ContentView.swift */; };
 		5F6DDBDF262CB553003481ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6DDBDE262CB553003481ED /* Assets.xcassets */; };
 		5F6DDBE2262CB553003481ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6DDBE1262CB553003481ED /* Preview Assets.xcassets */; };
+		5F6DDBF1262CB5FC003481ED /* Category&Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBEF262CB5FC003481ED /* Category&Notes.xcdatamodeld */; };
+		5F6DDBF5262CB897003481ED /* CoreDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBF4262CB897003481ED /* CoreDataManger.swift */; };
+		5F6DDBFA262CBEE5003481ED /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBF9262CBEE5003481ED /* ListView.swift */; };
+		5F6DDBFD262CBF2B003481ED /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBFC262CBF2B003481ED /* NewNoteView.swift */; };
+		5F6DDC00262CBF68003481ED /* NewCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBFF262CBF68003481ED /* NewCategoryView.swift */; };
+		5F7384AE262EE46B00C9B4CF /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7384AD262EE46B00C9B4CF /* NoteDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5F6DDBD7262CB551003481ED /* List&Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "List&Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6DDBDA262CB551003481ED /* List_NotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List_NotesApp.swift; sourceTree = "<group>"; };
-		5F6DDBDC262CB551003481ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5F6DDBDE262CB553003481ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F6DDBE1262CB553003481ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F6DDBE3262CB553003481ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6DDBF0262CB5FC003481ED /* Category&Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Category&Notes.xcdatamodel"; sourceTree = "<group>"; };
+		5F6DDBF4262CB897003481ED /* CoreDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManger.swift; sourceTree = "<group>"; };
+		5F6DDBF9262CBEE5003481ED /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		5F6DDBFC262CBF2B003481ED /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
+		5F6DDBFF262CBF68003481ED /* NewCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryView.swift; sourceTree = "<group>"; };
+		5F7384AD262EE46B00C9B4CF /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				5F6DDBDA262CB551003481ED /* List_NotesApp.swift */,
-				5F6DDBDC262CB551003481ED /* ContentView.swift */,
-				5F6DDBDE262CB553003481ED /* Assets.xcassets */,
+				5F6DDBF3262CB875003481ED /* Managers */,
+				5F6DDBEC262CB574003481ED /* View */,
+				5F6DDBEA262CB55E003481ED /* SupportingFiles */,
 				5F6DDBE3262CB553003481ED /* Info.plist */,
 				5F6DDBE0262CB553003481ED /* Preview Content */,
 			);
@@ -67,6 +78,34 @@
 				5F6DDBE1262CB553003481ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5F6DDBEA262CB55E003481ED /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5F6DDBEF262CB5FC003481ED /* Category&Notes.xcdatamodeld */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5F6DDBEC262CB574003481ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F6DDBDE262CB553003481ED /* Assets.xcassets */,
+				5F6DDBF9262CBEE5003481ED /* ListView.swift */,
+				5F6DDBFC262CBF2B003481ED /* NewNoteView.swift */,
+				5F6DDBFF262CBF68003481ED /* NewCategoryView.swift */,
+				5F7384AD262EE46B00C9B4CF /* NoteDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5F6DDBF3262CB875003481ED /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5F6DDBF4262CB897003481ED /* CoreDataManger.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +177,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F6DDBDD262CB551003481ED /* ContentView.swift in Sources */,
+				5F6DDBFA262CBEE5003481ED /* ListView.swift in Sources */,
+				5F6DDBF1262CB5FC003481ED /* Category&Notes.xcdatamodeld in Sources */,
+				5F6DDBF5262CB897003481ED /* CoreDataManger.swift in Sources */,
+				5F6DDBFD262CBF2B003481ED /* NewNoteView.swift in Sources */,
 				5F6DDBDB262CB551003481ED /* List_NotesApp.swift in Sources */,
+				5F6DDC00262CBF68003481ED /* NewCategoryView.swift in Sources */,
+				5F7384AE262EE46B00C9B4CF /* NoteDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +372,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5F6DDBEF262CB5FC003481ED /* Category&Notes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5F6DDBF0262CB5FC003481ED /* Category&Notes.xcdatamodel */,
+			);
+			currentVersion = 5F6DDBF0262CB5FC003481ED /* Category&Notes.xcdatamodel */;
+			path = "Category&Notes.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5F6DDBCF262CB550003481ED /* Project object */;
 }
