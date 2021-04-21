@@ -69,7 +69,6 @@ class CoreDataManger {
     }
     
     func updateNote () {
- 
         do {
             try persistentContainer.viewContext.save()
         } catch {

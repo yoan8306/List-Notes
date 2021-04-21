@@ -14,6 +14,19 @@ struct NewCategoryView: View {
     let coreDM: CoreDataManger
     @State var categoryField = String()
     @State private var category: [Category] = [Category]()
+    @State private var presentAlert = false
+    @State private var SaveSuccess = false
+    
+    private func checkDoubleCategory() -> Bool{
+        var find = true
+        for check in category {
+            if check.title == categoryField {
+                print("this category exist")
+                find = false
+            }
+        }
+        return find
+    }
     
     private func updateCategoryList() {
         category = coreDM.getAllCategory()
@@ -25,9 +38,14 @@ struct NewCategoryView: View {
                 TextField("Enter new category", text: $categoryField)
                     .autocapitalization(.sentences)
                 Button("Insert category") {
+                    if checkDoubleCategory() {
                     coreDM.saveCategory(title: categoryField)
                     category = coreDM.getAllCategory()
                     categoryField = ""
+                       SaveSuccess = true
+                    } else {
+                        presentAlert = true
+                    }
                 }
             }
             .padding()
@@ -49,6 +67,18 @@ struct NewCategoryView: View {
         .onAppear(perform: {
             updateCategoryList()
         })
+        .alert(isPresented: $presentAlert) {
+            Alert( //Exemple
+                title: Text("Error !"), message: Text("This category already exist !!"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .alert(isPresented: $SaveSuccess) {
+            Alert( //Exemple
+                title: Text("Success !"), message: Text("Insert with success !"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 

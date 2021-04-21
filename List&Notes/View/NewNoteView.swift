@@ -47,29 +47,22 @@ import SwiftUI
                     }
                
                     Button(action: {
-                        coreDM.saveNote(noteData: noteField,
-                                        noteTitle: noteTitleField,
-                                        noteDate: Date(),
-                                        noteCategory: categorySelected
-                                        )
-                        emptyField()
+                        guard !noteTitleField.isEmpty && !noteField.isEmpty && categorySelected != nil else {
+                            print("Error")
+                            return
+                        }
+                        coreDM.saveNote(noteData: noteField, noteTitle: noteTitleField,
+                                          noteDate: Date(), noteCategory: categorySelected)
+                          emptyField()
                           }, label: {
                               Text("Save")
                             }
-                   
                     )
                         .frame(maxWidth: .infinity, maxHeight: 40.0 )
                         .background(Color.yellow)
                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                         .cornerRadius(10)
-                    
-                
             }
-            .onReceive([self.categorySelected].publisher.first()) { (value) in
-                        print(value)
-                showButton = true
-            }
-           
             .navigationTitle("Create new note")
                 .onAppear(perform: {
                 category = coreDM.getAllCategory()
