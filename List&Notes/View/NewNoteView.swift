@@ -16,11 +16,21 @@ import SwiftUI
         @State private var noteField: String = "Your note here"
         @State private var noteTitleField = String()
         @State private var showButton = false
+        @State private var presentAlert = false
+        @State private var saveSuccess = false
         
         private func emptyField() {
             categoryField = ""
             noteField = ""
             noteTitleField = ""
+        }
+        private func checkNoteIsOk() -> Bool{
+            if !noteTitleField.isEmpty && !noteField.isEmpty && categorySelected != nil {
+              return true
+            } else {
+                presentAlert = true
+                return false
+            }
         }
         
           var body: some View {
@@ -39,22 +49,23 @@ import SwiftUI
                         .shadow(radius: 5)
                     
                         TextEditor(text: $noteField)
+                          .font(.body)
+                          .background(Color.white)
+                          .shadow(radius: 5)
+                          .cornerRadius(8)
                             .padding(.bottom)
-                      .font(.body)
-                      .background(Color.white)
-                      .shadow(radius: 5)
-                      .cornerRadius(8)
                     }
                
                     Button(action: {
-                        guard !noteTitleField.isEmpty && !noteField.isEmpty && categorySelected != nil else {
-                            print("Error")
+                        guard checkNoteIsOk() else {
                             return
                         }
                         coreDM.saveNote(noteData: noteField, noteTitle: noteTitleField,
                                           noteDate: Date(), noteCategory: categorySelected)
-                          emptyField()
-                          }, label: {
+                        emptyField()
+                        saveSuccess = true
+                          },
+                            label: {
                               Text("Save")
                             }
                     )
@@ -64,9 +75,17 @@ import SwiftUI
                         .cornerRadius(10)
             }
             .navigationTitle("Create new note")
-                .onAppear(perform: {
-                category = coreDM.getAllCategory()
-                })
+            .onAppear(perform: {category = coreDM.getAllCategory()})
+            
+            .alert(isPresented: $presentAlert) {
+                Alert(title: Text("Error !"), message: Text("Not saved"),
+                dismissButton: .default(Text("OK")))
+            }
+            
+            .alert(isPresented: $saveSuccess) {
+                Alert(title: Text("Success !"), message: Text("Insert with success !"),
+                dismissButton: .default(Text("OK")))
+            }
     }
 }
 

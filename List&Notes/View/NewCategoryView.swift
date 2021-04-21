@@ -15,7 +15,7 @@ struct NewCategoryView: View {
     @State var categoryField = String()
     @State private var category: [Category] = [Category]()
     @State private var presentAlert = false
-    @State private var SaveSuccess = false
+    @State private var saveSuccess = false
     
     private func checkDoubleCategory() -> Bool{
         var find = true
@@ -42,7 +42,7 @@ struct NewCategoryView: View {
                     coreDM.saveCategory(title: categoryField)
                     category = coreDM.getAllCategory()
                     categoryField = ""
-                       SaveSuccess = true
+                       saveSuccess = true
                     } else {
                         presentAlert = true
                     }
@@ -68,16 +68,12 @@ struct NewCategoryView: View {
             updateCategoryList()
         })
         .alert(isPresented: $presentAlert) {
-            Alert( //Exemple
-                title: Text("Error !"), message: Text("This category already exist !!"),
-                dismissButton: .default(Text("OK"))
-            )
+            Alert(title: Text("Error !"), message: Text("This category already exist !!"),
+                dismissButton: .default(Text("OK")))
         }
-        .alert(isPresented: $SaveSuccess) {
-            Alert( //Exemple
-                title: Text("Success !"), message: Text("Insert with success !"),
-                dismissButton: .default(Text("OK"))
-            )
+        .alert(isPresented: $saveSuccess) {
+            Alert(title: Text("Success !"), message: Text("Insert with success !"),
+                dismissButton: .default(Text("OK")))
         }
     }
 }
