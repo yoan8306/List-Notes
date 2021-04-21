@@ -79,13 +79,11 @@ import SwiftUI
             
             .alert(isPresented: $presentAlert) {
                 Alert(title: Text("Error !"), message: Text("Not saved"),
-                dismissButton: .default(Text("OK")))
-            }
+                dismissButton: .default(Text("OK"))) }
             
             .alert(isPresented: $saveSuccess) {
                 Alert(title: Text("Success !"), message: Text("Insert with success !"),
-                dismissButton: .default(Text("OK")))
-            }
+                dismissButton: .default(Text("OK"))) }
     }
 }
 
