@@ -11,13 +11,14 @@ import SwiftUI
         let coreDM: CoreDataManger
         
         @State var category: [Category] = [Category]()
-        @State private var categorySelected = Category()
+        @State private var categorySelected : Category? = nil
         @State private var categoryField = String()
         @State private var noteField: String = "Your note here"
         @State private var noteTitleField = String()
         @State private var showButton = false
         @State private var presentAlert = false
         @State private var saveSuccess = false
+        @State private var selection = Category()
         
         private func emptyField() {
             categoryField = ""
@@ -37,9 +38,9 @@ import SwiftUI
           
             VStack{
                 Form {
-                    Picker("Select your category", selection: $categorySelected) {
+                    Picker("Select your category", selection: $categorySelected ) {
                             ForEach(category, id: \.self) { categorize in
-                                Text(categorize.title ?? "no value")
+                                Text(categorize.title ?? "no value").tag((categorize as Category?))
                             }
                         }
                     TextField("titleNote", text: $noteTitleField)
@@ -55,13 +56,13 @@ import SwiftUI
                           .cornerRadius(8)
                             .padding(.bottom)
                     }
-               
+                if checkNoteIsOk() {
                     Button(action: {
                         guard checkNoteIsOk() else {
                             return
                         }
                         coreDM.saveNote(noteData: noteField, noteTitle: noteTitleField,
-                                          noteDate: Date(), noteCategory: categorySelected)
+                                          noteDate: Date(), noteCategory: categorySelected!)
                         emptyField()
                         saveSuccess = true
                           },
@@ -73,6 +74,7 @@ import SwiftUI
                         .background(Color.yellow)
                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                         .cornerRadius(10)
+                }
             }
             .navigationTitle("Create new note")
             .onAppear(perform: {category = coreDM.getAllCategory()})

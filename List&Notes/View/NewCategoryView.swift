@@ -16,7 +16,7 @@ struct NewCategoryView: View {
     @State private var category: [Category] = [Category]()
     @State private var presentAlert = false
     @State private var saveSuccess = false
-    
+    @State private var deleteCategory = false
     private func checkDoubleCategory() -> Bool{
         var find = true
         for check in category {
@@ -53,28 +53,25 @@ struct NewCategoryView: View {
             List {
                 ForEach(category, id: \.self) { categorize in
                     Text(categorize.title ?? "no value")
-                }.onDelete(perform: { indexSet in
+                }
+                .onDelete(perform: { indexSet in
                     indexSet.forEach { index in
                         let categorize = category[index]
                         coreDM.deleteCategory(category: categorize)
                         updateCategoryList()
-                    }
+                        }
                 })
             }
         }
-        
         .navigationTitle("New Category")
-        .onAppear(perform: {
-            updateCategoryList()
-        })
-        .alert(isPresented: $presentAlert) {
-            Alert(title: Text("Error !"), message: Text("This category already exist !!"),
-                dismissButton: .default(Text("OK")))
-        }
+        .onAppear(perform: { updateCategoryList()} )
         .alert(isPresented: $saveSuccess) {
             Alert(title: Text("Success !"), message: Text("Insert with success !"),
-                dismissButton: .default(Text("OK")))
-        }
+            dismissButton: .default(Text("OK"))) }
+        
+        .alert(isPresented: $presentAlert) {
+            Alert(title: Text("Error !"), message: Text("This category already exist !!"),
+            dismissButton: .default(Text("OK"))) }
     }
 }
 
