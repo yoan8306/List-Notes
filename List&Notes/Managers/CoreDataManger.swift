@@ -19,14 +19,23 @@ class CoreDataManger {
         }
     }
     
+    func sortNoteByCategory() -> [[Note]] {
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        guard let note = try? persistentContainer.viewContext.fetch(fetchRequest) else {
+            return []
+        }
+        return note.convertedToArrayofArray
+    }
+    
     func getAllNotes() -> [Note] {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        
+    
         do {
             return try persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             return []
         }
+    
     }
     
     func getAllCategory() ->[Category] {
@@ -100,4 +109,18 @@ class CoreDataManger {
         }
     }
     
+}
+
+extension Array where Element == Note {
+    var convertedToArrayofArray: [[Note]] {
+        var dict = [Category: [Note]]()
+        for notes in self where notes.category != nil {
+            dict[notes.category!,default: []].append(notes)
+        }
+        var result = [[Note]] ()
+        for (_, data) in dict {
+            result.append(data)
+        }
+        return result
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F601D852636F32D004B9628 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F601D842636F32D004B9628 /* File.swift */; };
 		5F6DDBDB262CB551003481ED /* List_NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDBDA262CB551003481ED /* List_NotesApp.swift */; };
 		5F6DDBDF262CB553003481ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6DDBDE262CB553003481ED /* Assets.xcassets */; };
 		5F6DDBE2262CB553003481ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6DDBE1262CB553003481ED /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F601D842636F32D004B9628 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5F6DDBD7262CB551003481ED /* List&Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "List&Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6DDBDA262CB551003481ED /* List_NotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List_NotesApp.swift; sourceTree = "<group>"; };
 		5F6DDBDE262CB553003481ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F601D832636F318004B9628 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F601D842636F32D004B9628 /* File.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5F6DDBCE262CB550003481ED = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 			children = (
 				5F6DDBDA262CB551003481ED /* List_NotesApp.swift */,
 				5F6DDBF3262CB875003481ED /* Managers */,
+				5F601D832636F318004B9628 /* Model */,
 				5F6DDBEC262CB574003481ED /* View */,
 				5F6DDBEA262CB55E003481ED /* SupportingFiles */,
 				5F6DDBE3262CB553003481ED /* Info.plist */,
@@ -182,6 +193,7 @@
 				5F6DDBF5262CB897003481ED /* CoreDataManger.swift in Sources */,
 				5F6DDBFD262CBF2B003481ED /* NewNoteView.swift in Sources */,
 				5F6DDBDB262CB551003481ED /* List_NotesApp.swift in Sources */,
+				5F601D852636F32D004B9628 /* File.swift in Sources */,
 				5F6DDC00262CBF68003481ED /* NewCategoryView.swift in Sources */,
 				5F7384AE262EE46B00C9B4CF /* NoteDetailView.swift in Sources */,
 			);

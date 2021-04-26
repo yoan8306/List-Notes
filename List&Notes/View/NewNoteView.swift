@@ -16,9 +16,8 @@ import SwiftUI
         @State private var noteField: String = "Your note here"
         @State private var noteTitleField = String()
         @State private var showButton = false
-        @State private var presentAlert = false
-        @State private var saveSuccess = false
         @State private var selection = Category()
+        @State private var alertType: AlertType?
         
         private func emptyField() {
             categoryField = ""
@@ -29,7 +28,6 @@ import SwiftUI
             if !noteTitleField.isEmpty && !noteField.isEmpty && categorySelected != nil {
               return true
             } else {
-                presentAlert = true
                 return false
             }
         }
@@ -58,14 +56,16 @@ import SwiftUI
                     }
                 if checkNoteIsOk() {
                     Button(action: {
-                        guard checkNoteIsOk() else {
-                            return
-                        }
+                        if checkNoteIsOk() {
                         coreDM.saveNote(noteData: noteField, noteTitle: noteTitleField,
                                           noteDate: Date(), noteCategory: categorySelected!)
                         emptyField()
-                        saveSuccess = true
-                          },
+                            alertType = AlertType.success
+                        } else {
+                            alertType = AlertType.error
+                        }
+                        
+                    },
                             label: {
                               Text("Save")
                             }
@@ -79,13 +79,11 @@ import SwiftUI
             .navigationTitle("Create new note")
             .onAppear(perform: {category = coreDM.getAllCategory()})
             
-            .alert(isPresented: $presentAlert) {
-                Alert(title: Text("Error !"), message: Text("Not saved"),
-                dismissButton: .default(Text("OK"))) }
+            .alert(item: $alertType, content: { (type) -> Alert in
+               Alert (title: Text(type.title), message: Text(type.message), dismissButton: .default(Text("OK")))
+                
+            })
             
-            .alert(isPresented: $saveSuccess) {
-                Alert(title: Text("Success !"), message: Text("Insert with success !"),
-                dismissButton: .default(Text("OK"))) }
     }
 }
 
